@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Cá Nhân</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-card">
+            <h1 class="name">Phùng Minh Hòa</h1>
+            <p class="bio">Developer | Gamer | Content Creator</p>
+            
+            <!-- Social Media Links -->
+            <div class="social-section">
+                <h2 class="section-title">Kết nối với tôi</h2>
+                <div class="social-grid">
+                    <a href="https://www.facebook.com/minh.hoa.007604" target="_blank" class="social-link facebook" data-tooltip="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://zalo.me/0353691019" target="_blank" class="social-link zalo" data-tooltip="Zalo">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>Zalo</span>
+                    </a>
+                    <a href="https://tiktok.com/@h7604zz" target="_blank" class="social-link tiktok" data-tooltip="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://locket.cam/h7604zz" target="_blank" class="social-link locket" data-tooltip="Locket">
+                        <i class="fas fa-camera"></i>
+                        <span>Locket</span>
+                    </a>
+                    <a href="https://github.com/H7604zz" target="_blank" class="social-link github" data-tooltip="GitHub">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Gaming Section -->
+            <div class="gaming-section">
+                <h2 class="section-title">Game IDs</h2>
+                <div class="game-cards">
+                    <div class="game-card pubg">
+                        <div class="game-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <div class="game-info">
+                            <h3>PUBG Mobile</h3>
+                            <p class="game-id">ID: 5349059403</p>
+                            <button class="copy-btn" onclick="copyToClipboard('5349059403', this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="game-card tft">
+                        <div class="game-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <div class="game-info">
+                            <h3>Đấu Trường Chân Lý (TFT)</h3>
+                            <p class="game-id">Riot ID: Khó vex nụ cười#7604</p>
+                            <button class="copy-btn" onclick="copyToClipboard('Khó vex nụ cười#7604', this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="game-card wildrift">
+                        <div class="game-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="game-info">
+                            <h3>Tốc Chiến (Wild Rift)</h3>
+                            <p class="game-id">Riot ID: Dracula#7604</p>
+                            <button class="copy-btn" onclick="copyToClipboard('Dracula#7604', this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
