@@ -3,89 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu Cá Nhân</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Phùng Minh Hòa</title>
+    <meta name="description" content="Phùng Minh Hòa — Developer, Gamer, Content Creator. Kết nối và Game IDs.">
+    <meta name="theme-color" content="#0b0b14">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Profile Section -->
-        <div class="profile-card">
+    <main class="page">
+        <header class="hero reveal" style="--i:0">
+            <div class="avatar"><span>MH</span></div>
             <h1 class="name">Phùng Minh Hòa</h1>
-            <p class="bio">Developer | Gamer | Content Creator</p>
-            
-            <!-- Social Media Links -->
-            <div class="social-section">
-                <h2 class="section-title">Kết nối với tôi</h2>
-                <div class="social-grid">
-                    <a href="https://www.facebook.com/minh.hoa.007604" target="_blank" class="social-link facebook" data-tooltip="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="https://zalo.me/0353691019" target="_blank" class="social-link zalo" data-tooltip="Zalo">
-                        <i class="fas fa-comment-dots"></i>
-                        <span>Zalo</span>
-                    </a>
-                    <a href="https://tiktok.com/@h7604zz" target="_blank" class="social-link tiktok" data-tooltip="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                        <span>TikTok</span>
-                    </a>
-                    <a href="https://locket.cam/h7604zz" target="_blank" class="social-link locket" data-tooltip="Locket">
-                        <i class="fas fa-camera"></i>
-                        <span>Locket</span>
-                    </a>
-                </div>
+            <ul class="tags">
+                <li><i class="fas fa-code"></i> Developer</li>
+                <li><i class="fas fa-gamepad"></i> Gamer</li>
+                <li><i class="fas fa-video"></i> Content Creator</li>
+            </ul>
+        </header>
+
+        <section class="reveal" style="--i:1">
+            <h2 class="label">Kết nối với tôi</h2>
+            <div class="links">
+                <a class="link" style="--brand:#1877f2" href="https://www.facebook.com/minh.hoa.007604" target="_blank" rel="noopener">
+                    <span class="tile"><i class="fab fa-facebook-f"></i></span>
+                    <span class="text"><strong>Facebook</strong><small>minh.hoa.007604</small></span>
+                    <i class="fas fa-arrow-right arrow"></i>
+                </a>
+                <a class="link" style="--brand:#0068ff" href="https://zalo.me/0353691019" target="_blank" rel="noopener">
+                    <span class="tile"><i class="fas fa-comment-dots"></i></span>
+                    <span class="text"><strong>Zalo</strong><small>0353 691 019</small></span>
+                    <i class="fas fa-arrow-right arrow"></i>
+                </a>
+                <a class="link" style="--brand:#ff0050" href="https://tiktok.com/@h7604zz" target="_blank" rel="noopener">
+                    <span class="tile"><i class="fab fa-tiktok"></i></span>
+                    <span class="text"><strong>TikTok</strong><small>@h7604zz</small></span>
+                    <i class="fas fa-arrow-right arrow"></i>
+                </a>
+                <a class="link" style="--brand:#ffb800" href="https://locket.cam/h7604zz" target="_blank" rel="noopener">
+                    <span class="tile"><i class="fas fa-heart"></i></span>
+                    <span class="text"><strong>Locket</strong><small>h7604zz</small></span>
+                    <i class="fas fa-arrow-right arrow"></i>
+                </a>
             </div>
+        </section>
 
-            <!-- Gaming Section -->
-            <div class="gaming-section">
-                <h2 class="section-title">Game IDs</h2>
-                <div class="game-cards">
-                    <div class="game-card pubg">
-                        <div class="game-icon">
-                            <i class="fas fa-crosshairs"></i>
-                        </div>
-                        <div class="game-info">
-                            <h3>PUBG Mobile</h3>
-                            <p class="game-id">ID: 5349059403</p>
-                            <button class="copy-btn" onclick="copyToClipboard('5349059403', this)">
-                                <i class="fas fa-copy"></i> Copy
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="game-card tft">
-                        <div class="game-icon">
-                            <i class="fas fa-chess"></i>
-                        </div>
-                        <div class="game-info">
-                            <h3>Đấu Trường Chân Lý (TFT)</h3>
-                            <p class="game-id">Riot ID: Khó vex nụ cười#7604</p>
-                            <button class="copy-btn" onclick="copyToClipboard('Khó vex nụ cười#7604', this)">
-                                <i class="fas fa-copy"></i> Copy
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="game-card wildrift">
-                        <div class="game-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <div class="game-info">
-                            <h3>Tốc Chiến (Wild Rift)</h3>
-                            <p class="game-id">Riot ID: Dracula#7604</p>
-                            <button class="copy-btn" onclick="copyToClipboard('Dracula#7604', this)">
-                                <i class="fas fa-copy"></i> Copy
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <section class="reveal" style="--i:2">
+            <h2 class="label">Game IDs <span>· bấm để copy</span></h2>
+            <div class="games">
+                <button class="game" style="--brand:#f2a900" data-copy="5349059403">
+                    <span class="tile"><i class="fas fa-crosshairs"></i></span>
+                    <span class="text"><strong>PUBG Mobile</strong><code>5349059403</code></span>
+                    <span class="copy"><i class="fas fa-copy"></i><i class="fas fa-check"></i></span>
+                </button>
+                <button class="game" style="--brand:#c89b3c" data-copy="Khó vex nụ cười#7604">
+                    <span class="tile"><i class="fas fa-chess"></i></span>
+                    <span class="text"><strong>Đấu Trường Chân Lý</strong><code>Khó vex nụ cười#7604</code></span>
+                    <span class="copy"><i class="fas fa-copy"></i><i class="fas fa-check"></i></span>
+                </button>
+                <button class="game" style="--brand:#0bc6e3" data-copy="Dracula#7604">
+                    <span class="tile"><i class="fas fa-gamepad"></i></span>
+                    <span class="text"><strong>Tốc Chiến</strong><code>Dracula#7604</code></span>
+                    <span class="copy"><i class="fas fa-copy"></i><i class="fas fa-check"></i></span>
+                </button>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Particles Background -->
-    <div class="particles" id="particles"></div>
+        <footer class="footer reveal" style="--i:3">© 2026 Phùng Minh Hòa · minh-hoa.io.vn</footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="script.js"></script>
 </body>
