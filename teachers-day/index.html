@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20/11 · Ngày Nhà giáo Việt Nam</title>
+    <meta name="description" content="20/11 — Ngày Nhà giáo Việt Nam. Tri ân thầy cô.">
+    <meta name="theme-color" content="#14060a">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Dancing+Script:wght@600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../shared/wishes.css">
+    <style>
+        * { margin: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh; display: grid; place-items: center; overflow-x: hidden;
+            font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #fdf1e3;
+            background: radial-gradient(ellipse at 50% 20%, #3a1018, #14060a 70%);
+            -webkit-font-smoothing: antialiased;
+        }
+        #fx { position: fixed; inset: 0; width: 100%; height: 100%; }
+        main {
+            position: relative; max-width: 640px; width: 100%; padding: 48px 16px 32px;
+            display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+        }
+        .icon { font-size: 2.4rem; color: #f5c76b; filter: drop-shadow(0 0 14px #f5c76b); animation: float 3s ease-in-out infinite; }
+        @keyframes float { 50% { transform: translateY(-8px); } }
+        .date {
+            font-size: clamp(4.5rem, 22vw, 9rem); font-weight: 800; line-height: 1; letter-spacing: -.04em;
+            background: linear-gradient(135deg, #ffe29a, #f5c76b 45%, #f472b6);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            filter: drop-shadow(0 0 24px rgba(245, 199, 107, .5));
+            animation: glow 4s ease-in-out infinite;
+        }
+        @keyframes glow { 50% { filter: drop-shadow(0 0 42px rgba(244, 114, 182, .7)); } }
+        h1 { font-size: clamp(1.3rem, 5vw, 1.9rem); font-weight: 600; }
+        .sub { font-style: italic; color: #e6c9a8; }
+        /* Bảng đen */
+        .board {
+            width: 100%; margin-top: 12px; padding: 28px 16px;
+            background: #14352c; border: 10px solid #7a4a22; border-radius: 10px;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, .55), 0 20px 50px rgba(0, 0, 0, .5);
+            --wish-color: #f4f1e6; --glow: rgba(255, 255, 255, .45);
+        }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+</head>
+<body>
+    <canvas id="fx"></canvas>
+    <main>
+        <i class="fa-solid fa-graduation-cap icon"></i>
+        <div class="date">20.11</div>
+        <h1>Ngày Nhà giáo Việt Nam</h1>
+        <p class="sub">Tôn sư trọng đạo · Không thầy đố mày làm nên</p>
+        <div class="board"><div class="wishbox"><div class="wish" id="wish"></div></div></div>
+    </main>
+
+    <script src="../shared/wishes.js"></script>
+    <script>
+        startWishes(document.getElementById('wish'), 'wishes.txt', 'Chúc mừng Ngày Nhà giáo Việt Nam 20/11!');
+
+        // Cánh hoa (hồng/đỏ, thỉnh thoảng vàng) rơi xoay nhẹ + bụi vàng lấp lánh
+        const cv = document.getElementById('fx'), g = cv.getContext('2d'), dpr = Math.min(devicePixelRatio, 2);
+        let W, H;
+        function size() { W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); }
+        addEventListener('resize', size);
+        size();
+        const rnd = (a, b) => a + Math.random() * (b - a);
+        const petal = fresh => ({ x: rnd(0, W), y: fresh ? rnd(0, H) : -20, s: rnd(6, 14), vy: rnd(.6, 1.6), p: rnd(0, 6.28), rot: rnd(0, 6.28), vr: rnd(-.03, .03), h: Math.random() < .75 ? rnd(335, 355) : 42 });
+        const petals = Array.from({ length: 55 }, () => petal(true));
+        const dust = Array.from({ length: 70 }, () => ({ x: rnd(0, W), y: rnd(0, H), r: rnd(.6, 1.8), p: rnd(0, 6.28) }));
+        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        (function frame(t) {
+            g.clearRect(0, 0, W, H);
+            g.globalCompositeOperation = 'lighter';
+            g.shadowBlur = 8; g.shadowColor = '#f5c76b';
+            for (const d of dust) {
+                g.fillStyle = `rgba(255,214,120,${.1 + .8 * Math.abs(Math.sin(t / 1100 + d.p)) ** 4})`;
+                g.beginPath(); g.arc(d.x, d.y, d.r, 0, 6.283); g.fill();
+            }
+            g.shadowBlur = 0;
+            g.globalCompositeOperation = 'source-over';
+            for (const q of petals) {
+                q.y += q.vy; q.x += Math.sin(t / 1200 + q.p) * .8; q.rot += q.vr;
+                if (q.y > H + 20) Object.assign(q, petal(false));
+                g.save();
+                g.translate(q.x, q.y); g.rotate(q.rot);
+                g.scale(1, .55 + .45 * Math.abs(Math.sin(t / 700 + q.p)));   // lật nghiêng khi rơi
+                g.fillStyle = `hsla(${q.h},85%,66%,.85)`;
+                g.beginPath(); g.ellipse(0, 0, q.s, q.s * .55, 0, 0, 6.283); g.fill();
+                g.restore();
+            }
+            if (!still) requestAnimationFrame(frame);
+        })(0);
+    </script>
+</body>
+</html>

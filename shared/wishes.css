@@ -1,0 +1,15 @@
+/* Lời chúc hiện từng chữ, dùng chung cho các trang. Đổi màu bằng --wish-color và --glow */
+.wishbox { min-height: 3.4em; display: grid; align-items: center; }
+.wish {
+    text-align: center;
+    font: clamp(22px, 5vw, 38px)/1.3 'Dancing Script', cursive;
+    color: var(--wish-color, #fff);
+    text-shadow: 0 0 10px var(--glow, #fff), 0 0 26px var(--glow, #fff);
+    opacity: 0;
+    transition: opacity 1s;
+}
+.wish.show { opacity: 1; }
+.wish .w { white-space: nowrap; }
+.wish .c { display: inline-block; white-space: pre; }
+.wish.show .c { animation: wish-in .9s both; }
+@keyframes wish-in { from { opacity: 0; filter: blur(8px); transform: translateY(10px); } }

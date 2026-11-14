@@ -1,0 +1,7 @@
+# Mỗi dòng là một lời chúc, hiện lần lượt rồi lặp lại. Dòng trống và dòng bắt đầu bằng # sẽ bị bỏ qua.
+Chúc mừng Ngày Quốc tế Nam giới 19/11!
+Chúc anh em luôn khỏe mạnh và bình an
+Mạnh mẽ là tốt, nhưng cũng đừng quên nghỉ ngơi
+Mong anh em luôn có người thương và bạn bè bên cạnh
+Công việc thuận lợi, ví luôn rủng rỉnh
+Được phép mệt, được phép yếu lòng, bạn không đơn độc

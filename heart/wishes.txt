@@ -1,0 +1,4 @@
+# Mỗi dòng là một lời chúc, hiện lần lượt rồi lặp lại. Dòng trống và dòng bắt đầu bằng # sẽ bị bỏ qua.
+Chúc bạn luôn hạnh phúc ♥
+Mong mọi điều tốt đẹp sẽ đến với bạn
+Yêu thương luôn ở bên bạn mỗi ngày

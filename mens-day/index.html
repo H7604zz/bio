@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19/11 · Ngày Quốc tế Nam giới</title>
+    <meta name="description" content="19/11 — Ngày Quốc tế Nam giới. Gửi lời chúc đến các quý ông.">
+    <meta name="theme-color" content="#050816">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Dancing+Script:wght@600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../shared/wishes.css">
+    <style>
+        * { margin: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh; display: grid; place-items: center; overflow-x: hidden;
+            font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #eaf4ff;
+            background: radial-gradient(ellipse at 50% 30%, #0b1d3a, #050816 70%);
+            -webkit-font-smoothing: antialiased;
+        }
+        #fx { position: fixed; inset: 0; width: 100%; height: 100%; }
+        main {
+            position: relative; max-width: 640px; width: 100%; padding: 48px 16px 32px;
+            display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+            --wish-color: #dff3ff; --glow: #22d3ee;
+        }
+        .icon { font-size: 2.4rem; color: #22d3ee; filter: drop-shadow(0 0 14px #22d3ee); animation: float 3s ease-in-out infinite; }
+        @keyframes float { 50% { transform: translateY(-8px); } }
+        .date {
+            font-size: clamp(4.5rem, 22vw, 9rem); font-weight: 800; line-height: 1; letter-spacing: -.04em;
+            background: linear-gradient(135deg, #7dd3fc, #3b82f6 50%, #22d3ee);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            filter: drop-shadow(0 0 24px rgba(59, 130, 246, .55));
+            animation: glow 4s ease-in-out infinite;
+        }
+        @keyframes glow { 50% { filter: drop-shadow(0 0 42px rgba(34, 211, 238, .85)); } }
+        h1 { font-size: clamp(1.3rem, 5vw, 1.9rem); font-weight: 600; }
+        .sub { max-width: 480px; font-size: .95rem; line-height: 1.6; color: #9db4d0; }
+        .wishbox { width: 100%; margin-top: 12px; }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+</head>
+<body>
+    <canvas id="fx"></canvas>
+    <main>
+        <i class="fa-solid fa-mars icon"></i>
+        <div class="date">19.11</div>
+        <h1>Ngày Quốc tế Nam giới</h1>
+        <p class="sub">International Men's Day: một ngày để trân trọng sức khỏe, sự cống hiến và những giá trị tốt đẹp của phái mạnh.</p>
+        <div class="wishbox"><div class="wish" id="wish"></div></div>
+    </main>
+
+    <script src="../shared/wishes.js"></script>
+    <script>
+        startWishes(document.getElementById('wish'), 'wishes.txt', 'Chúc mừng Ngày Quốc tế Nam giới 19/11!');
+
+        // Đom đóm xanh bay lên + sao băng thỉnh thoảng vụt qua
+        const cv = document.getElementById('fx'), g = cv.getContext('2d'), dpr = Math.min(devicePixelRatio, 2);
+        let W, H;
+        function size() { W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); }
+        addEventListener('resize', size);
+        size();
+        const rnd = (a, b) => a + Math.random() * (b - a);
+        const dots = Array.from({ length: 90 }, () => ({ x: rnd(0, W), y: rnd(0, H), r: rnd(.8, 2.4), vy: -rnd(.05, .35), p: rnd(0, 6.28), h: rnd(185, 225) }));
+        const stars = [];
+        let nextStar = 0;
+        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        (function frame(t) {
+            g.clearRect(0, 0, W, H);
+            g.globalCompositeOperation = 'lighter';
+            for (const d of dots) {
+                d.y += d.vy;
+                d.x += Math.sin(t / 2000 + d.p) * .25;
+                if (d.y < -10) { d.y = H + 10; d.x = rnd(0, W); }
+                g.fillStyle = `hsla(${d.h},100%,70%,${.25 + .75 * Math.abs(Math.sin(t / 900 + d.p))})`;
+                g.shadowBlur = 12; g.shadowColor = `hsl(${d.h},100%,60%)`;
+                g.beginPath(); g.arc(d.x, d.y, d.r, 0, 6.283); g.fill();
+            }
+            g.shadowBlur = 0;
+            if (!still && t > nextStar) { stars.push({ x: rnd(0, W), y: rnd(0, H * .4), life: 1 }); nextStar = t + rnd(2000, 5000); }
+            for (let i = stars.length; i--;) {
+                const s = stars[i];
+                s.x += 9; s.y += 4; s.life -= .018;
+                if (s.life <= 0) { stars.splice(i, 1); continue; }
+                const grad = g.createLinearGradient(s.x, s.y, s.x - 90, s.y - 40);
+                grad.addColorStop(0, `rgba(200,235,255,${s.life})`);
+                grad.addColorStop(1, 'rgba(200,235,255,0)');
+                g.strokeStyle = grad; g.lineWidth = 2;
+                g.beginPath(); g.moveTo(s.x, s.y); g.lineTo(s.x - 90, s.y - 40); g.stroke();
+            }
+            if (!still) requestAnimationFrame(frame);
+        })(0);
+    </script>
+</body>
+</html>
